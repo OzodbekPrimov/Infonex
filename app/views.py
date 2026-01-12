@@ -5,7 +5,7 @@ from drf_spectacular.utils import (
     extend_schema_view,
 )
 from rest_framework import generics, permissions
-from rest_framework.parsers import FormParser, MultiPartParser
+from rest_framework.parsers import MultiPartParser
 
 from .models import (
     AboutUs,
@@ -105,7 +105,7 @@ class ProjectImageListCreateView(generics.ListCreateAPIView):
     queryset = ProjectImage.objects.all()
     serializer_class = ProjectImageSerializer
     permission_classes = [IsSuperuserOrReadOnly]
-    parser_classes = [MultiPartParser, FormParser]
+    parser_classes = [MultiPartParser]
 
 
 @extend_schema(tags=["ProjectImage"])
@@ -149,15 +149,13 @@ class ProjectImageDetailView(generics.RetrieveUpdateDestroyAPIView):
         "multipart/form-data": {
             "type": "object",
             "properties": {
-                "image": {
-                    "type": "string",
-                    "format": "binary",
-                },
-                "text": {
-                    "type": "string",
-                },
+                "image": {"type": "string", "format": "binary"},
+                "text_uz": {"type": "string"},
+                "text_ru": {"type": "string"},
+                "text_en": {"type": "string"},
+                "text_ar": {"type": "string"},
             },
-            "required": ["image", "text"],
+            "required": ["image", "text_uz"],
         }
     },
     responses=AboutUsSerializer,
@@ -166,7 +164,7 @@ class AboutUsListCreateView(generics.ListCreateAPIView):
     queryset = AboutUs.objects.all()
     serializer_class = AboutUsSerializer
     permission_classes = [IsSuperuserOrReadOnly]
-    parser_classes = [MultiPartParser, FormParser]
+    parser_classes = [MultiPartParser]
 
 
 
@@ -179,9 +177,12 @@ class AboutUsListCreateView(generics.ListCreateAPIView):
                 "type": "object",
                 "properties": {
                     "image": {"type": "string", "format": "binary"},
-                    "text": {"type": "string"},
+                    "text_uz": {"type": "string"},
+                    "text_ru": {"type": "string"},
+                    "text_en": {"type": "string"},
+                    "text_ar": {"type": "string"},
                 },
-                "required": ["image", "text"],
+                "required": ["image", "text_uz"],
             }
         },
         responses=AboutUsSerializer,
@@ -192,7 +193,10 @@ class AboutUsListCreateView(generics.ListCreateAPIView):
                 "type": "object",
                 "properties": {
                     "image": {"type": "string", "format": "binary"},
-                    "text": {"type": "string"},
+                    "text_uz": {"type": "string"},
+                    "text_ru": {"type": "string"},
+                    "text_en": {"type": "string"},
+                    "text_ar": {"type": "string"},
                 },
             }
         },
@@ -241,7 +245,7 @@ class TeamListCreateView(generics.ListCreateAPIView):
     queryset = Team.objects.all()
     serializer_class = TeamSerializer
     permission_classes = [IsSuperuserOrReadOnly]
-    parser_classes = [MultiPartParser, FormParser]
+    parser_classes = [MultiPartParser]
 
 
 @extend_schema(tags=["Team"])
@@ -313,10 +317,16 @@ class ContactCreateView(generics.CreateAPIView):
             "type": "object",
             "properties": {
                 "image": {"type": "string", "format": "binary"},
-                "username": {"type": "string"},
-                "text": {"type": "string"},
+                "username_uz": {"type": "string"},
+                "username_ru": {"type": "string"},
+                "username_en": {"type": "string"},
+                "username_ar": {"type": "string"},
+                "text_uz": {"type": "string"},
+                "text_ru": {"type": "string"},
+                "text_en": {"type": "string"},
+                "text_ar": {"type": "string"},
             },
-            "required": ["image", "username", "text"],
+            "required": ["image", "username_uz", "text_uz"],
         }
     },
     responses=CommentSerializer,
@@ -325,7 +335,7 @@ class ContactCreateView(generics.CreateAPIView):
 class CommentListCreateView(generics.ListCreateAPIView):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
-    parser_classes = [MultiPartParser, FormParser]
+    parser_classes = [MultiPartParser]
 
 
 @extend_schema(tags=["Comment"])
@@ -337,10 +347,16 @@ class CommentListCreateView(generics.ListCreateAPIView):
                 "type": "object",
                 "properties": {
                     "image": {"type": "string", "format": "binary"},
-                    "username": {"type": "string"},
-                    "text": {"type": "string"},
+                    "username_uz": {"type": "string"},
+                    "username_ru": {"type": "string"},
+                    "username_en": {"type": "string"},
+                    "username_ar": {"type": "string"},
+                    "text_uz": {"type": "string"},
+                    "text_ru": {"type": "string"},
+                    "text_en": {"type": "string"},
+                    "text_ar": {"type": "string"},
                 },
-                "required": ["image", "username", "text"],
+                "required": ["image", "username_uz", "text_uz"],
             }
         },
         responses=CommentSerializer,
@@ -351,8 +367,14 @@ class CommentListCreateView(generics.ListCreateAPIView):
                 "type": "object",
                 "properties": {
                     "image": {"type": "string", "format": "binary"},
-                    "username": {"type": "string"},
-                    "text": {"type": "string"},
+                    "username_uz": {"type": "string"},
+                    "username_ru": {"type": "string"},
+                    "username_en": {"type": "string"},
+                    "username_ar": {"type": "string"},
+                    "text_uz": {"type": "string"},
+                    "text_ru": {"type": "string"},
+                    "text_en": {"type": "string"},
+                    "text_ar": {"type": "string"},
                 },
             }
         },

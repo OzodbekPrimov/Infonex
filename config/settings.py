@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'drf_spectacular',
     'rest_framework',
     "app",
@@ -37,8 +38,10 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -108,13 +111,26 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'uz'
 
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
 USE_TZ = True
+
+LANGUAGES = [
+    ('uz', 'Uzbek'),
+    ('ru', 'Russian'),
+    ('en', 'English'),
+    ('ar', 'Arabic'),
+]
+
+LANGUAGES_BIDI = ['ar']
+
+LOCALE_PATHS = [
+    BASE_DIR / 'locale',
+]
 
 
 
@@ -147,3 +163,10 @@ CELERY_RESULT_BACKEND = os.getenv("CELERY_RESULT_BACKEND", "redis://redis:6379/0
 
 BOT_TOKEN = os.getenv("BOT_TOKEN", "")
 BOT_USER_ID = os.getenv("BOT_USER_ID", "")
+
+CORS_ALLOWED_ORIGINS = [
+    origin.strip()
+    for origin in os.getenv("CORS_ALLOWED_ORIGINS", "").split(",")
+    if origin.strip()
+]
+CORS_ALLOW_ALL_ORIGINS = env_bool("CORS_ALLOW_ALL_ORIGINS", False)

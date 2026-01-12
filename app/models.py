@@ -2,22 +2,31 @@ from django.db import models
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=255, unique=True)
+    name_uz = models.CharField(max_length=255, unique=True)
+    name_ru = models.CharField(max_length=255, blank=True, null=True)
+    name_en = models.CharField(max_length=255, blank=True, null=True)
+    name_ar = models.CharField(max_length=255, blank=True, null=True)
 
     def __str__(self) -> str:
-        return self.name
+        return self.name_uz
 
 
 class Project(models.Model):
-    title = models.CharField(max_length=255)
-    description = models.TextField()
+    title_uz = models.CharField(max_length=255)
+    title_ru = models.CharField(max_length=255, blank=True, null=True)
+    title_en = models.CharField(max_length=255, blank=True, null=True)
+    title_ar = models.CharField(max_length=255, blank=True, null=True)
+    description_uz = models.TextField()
+    description_ru = models.TextField(blank=True, null=True)
+    description_en = models.TextField(blank=True, null=True)
+    description_ar = models.TextField(blank=True, null=True)
     type = models.ManyToManyField(Category, related_name="projects")
     link = models.URLField(blank=True)
     client = models.CharField(max_length=255, blank=True)
     year = models.PositiveIntegerField()
 
     def __str__(self) -> str:
-        return self.title
+        return self.title_uz
 
 
 class ProjectImage(models.Model):
@@ -29,7 +38,10 @@ class ProjectImage(models.Model):
 
 
 class AboutUs(models.Model):
-    text = models.TextField()
+    text_uz = models.TextField()
+    text_ru = models.TextField(blank=True, null=True)
+    text_en = models.TextField(blank=True, null=True)
+    text_ar = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to="about/")
 
     def __str__(self) -> str:
@@ -37,10 +49,13 @@ class AboutUs(models.Model):
 
 
 class Profession(models.Model):
-    title = models.CharField(max_length=255, unique=True)
+    title_uz = models.CharField(max_length=255, unique=True)
+    title_ru = models.CharField(max_length=255, blank=True, null=True)
+    title_en = models.CharField(max_length=255, blank=True, null=True)
+    title_ar = models.CharField(max_length=255, blank=True, null=True)
 
     def __str__(self) -> str:
-        return self.title
+        return self.title_uz
 
 
 class Team(models.Model):
@@ -56,11 +71,17 @@ class Team(models.Model):
 
 
 class Service(models.Model):
-    name = models.CharField(max_length=255, unique=True)
-    description = models.TextField(null=True, blank=True)
+    name_uz = models.CharField(max_length=255, unique=True)
+    name_ru = models.CharField(max_length=255, blank=True, null=True)
+    name_en = models.CharField(max_length=255, blank=True, null=True)
+    name_ar = models.CharField(max_length=255, blank=True, null=True)
+    description_uz = models.TextField(null=True, blank=True)
+    description_ru = models.TextField(null=True, blank=True)
+    description_en = models.TextField(null=True, blank=True)
+    description_ar = models.TextField(null=True, blank=True)
 
     def __str__(self) -> str:
-        return self.name
+        return self.name_uz
 
 
 class Contact(models.Model):
@@ -74,9 +95,15 @@ class Contact(models.Model):
 
 
 class Comment(models.Model):
-    text = models.TextField()
-    username = models.CharField(max_length=150)
+    text_uz = models.TextField()
+    text_ru = models.TextField(blank=True, null=True)
+    text_en = models.TextField(blank=True, null=True)
+    text_ar = models.TextField(blank=True, null=True)
+    username_uz = models.CharField(max_length=150)
+    username_ru = models.CharField(max_length=150, blank=True, null=True)
+    username_en = models.CharField(max_length=150, blank=True, null=True)
+    username_ar = models.CharField(max_length=150, blank=True, null=True)
     image = models.ImageField(upload_to="comments/")
 
     def __str__(self) -> str:
-        return f"{self.username}: {self.text[:30]}"
+        return f"{self.username_uz}: {self.text_uz[:30]}"
