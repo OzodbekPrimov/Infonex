@@ -20,6 +20,7 @@ pillow==12.1.0
 prompt_toolkit==3.0.52
 python-dateutil==2.9.0.post0
 python-dotenv==1.2.1
+psycopg2-binary==2.9.10
 PyYAML==6.0.3
 redis==7.1.0
 referencing==0.37.0
