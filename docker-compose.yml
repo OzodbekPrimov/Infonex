@@ -1,0 +1,33 @@
+services:
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+  celery:
+    build: .
+    command: celery -A config worker -l info
+    environment:
+      CELERY_BROKER_URL: redis://redis:6379/0
+      CELERY_RESULT_BACKEND: redis://redis:6379/0
+    volumes:
+      - .:/app
+    depends_on:
+      - redis
+  redis:
+    image: redis:7-alpine
+  # db:
+  #   image: postgres:16-alpine
+  #   environment:
+  #     POSTGRES_DB: infonex
+  #     POSTGRES_USER: infonex
+  #     POSTGRES_PASSWORD: infonex
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #   profiles:
+  #     - production
+
+volumes:
+  postgres_data:
