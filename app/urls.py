@@ -10,10 +10,11 @@ from .views import (
     ContactCreateView,
     ProfessionDetailView,
     ProfessionListCreateView,
+    ProjectCreateView,
     ProjectDetailView,
     ProjectImageDetailView,
     ProjectImageListCreateView,
-    ProjectListCreateView,
+    ProjectListView,
     ServiceDetailView,
     ServiceListCreateView,
     TeamDetailView,
@@ -25,7 +26,8 @@ urlpatterns = [
     path(
         "categories/<int:pk>/", CategoryDetailView.as_view(), name="category-detail"
     ),
-    path("projects/", ProjectListCreateView.as_view(), name="project-list-create"),
+    path("projects/", ProjectListView.as_view(), name="project-list"),
+    path("project/create",ProjectCreateView.as_view()),
     path("projects/<int:pk>/", ProjectDetailView.as_view(), name="project-detail"),
     path(
         "project-images/",

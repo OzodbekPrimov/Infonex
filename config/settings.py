@@ -1,14 +1,25 @@
 
-import os
 from pathlib import Path
 
+import os
+from dotenv import load_dotenv
+
 BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(BASE_DIR / ".env")
 
 
-SECRET_KEY = 'django-insecure-9&@#jcjqg9d$^(vz-+cu75sjmgry^p$cvec&mwt60_g_kk@e%m'
-DEBUG = True
+def env_bool(name: str, default: bool = False) -> bool:
+    value = os.getenv(name)
+    if value is None:
+        return default
+    return value.strip().lower() in {"1", "true", "yes", "on"}
 
-ALLOWED_HOSTS = ["*"]
+
+SECRET_KEY = os.getenv("SECRET_KEY", "django-insecure-change-me")
+DEBUG = env_bool("DEBUG", True)
+
+allowed_hosts = os.getenv("ALLOWED_HOSTS", "*")
+ALLOWED_HOSTS = [host.strip() for host in allowed_hosts.split(",") if host.strip()]
 
 
 

@@ -1,3 +1,4 @@
+from drf_spectacular.utils import OpenApiTypes, extend_schema_field
 from rest_framework import serializers
 
 from .models import (
@@ -26,15 +27,20 @@ class ProjectSerializer(serializers.ModelSerializer):
 
 
 class ProjectImageSerializer(serializers.ModelSerializer):
+    image = extend_schema_field(OpenApiTypes.BINARY)(serializers.ImageField())
+
     class Meta:
         model = ProjectImage
         fields = "__all__"
 
 
 class AboutUsSerializer(serializers.ModelSerializer):
+    image = serializers.ImageField()
+
     class Meta:
         model = AboutUs
         fields = "__all__"
+
 
 
 class ProfessionSerializer(serializers.ModelSerializer):
@@ -44,6 +50,8 @@ class ProfessionSerializer(serializers.ModelSerializer):
 
 
 class TeamSerializer(serializers.ModelSerializer):
+    image = extend_schema_field(OpenApiTypes.BINARY)(serializers.ImageField())
+
     class Meta:
         model = Team
         fields = "__all__"
@@ -62,6 +70,8 @@ class ContactSerializer(serializers.ModelSerializer):
 
 
 class CommentSerializer(serializers.ModelSerializer):
+    image = extend_schema_field(OpenApiTypes.BINARY)(serializers.ImageField())
+
     class Meta:
         model = Comment
         fields = "__all__"

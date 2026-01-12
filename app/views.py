@@ -1,5 +1,11 @@
-from drf_spectacular.utils import OpenApiParameter, OpenApiTypes, extend_schema
+from drf_spectacular.utils import (
+    OpenApiParameter,
+    OpenApiTypes,
+    extend_schema,
+    extend_schema_view,
+)
 from rest_framework import generics, permissions
+from rest_framework.parsers import FormParser, MultiPartParser
 
 from .models import (
     AboutUs,
@@ -33,13 +39,13 @@ class IsSuperuserOrReadOnly(permissions.BasePermission):
         user = request.user
         return bool(user and user.is_authenticated and user.is_superuser)
 
-
+@extend_schema(tags=["Category"])
 class CategoryListCreateView(generics.ListCreateAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
     permission_classes = [IsSuperuserOrReadOnly]
 
-
+@extend_schema(tags=["Category"])
 class CategoryDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
@@ -47,6 +53,7 @@ class CategoryDetailView(generics.RetrieveUpdateDestroyAPIView):
 
 
 @extend_schema(
+    tags=["Project"],
     parameters=[
         OpenApiParameter(
             name="category",
@@ -57,7 +64,7 @@ class CategoryDetailView(generics.RetrieveUpdateDestroyAPIView):
         )
     ]
 )
-class ProjectListCreateView(generics.ListCreateAPIView):
+class ProjectListView(generics.ListAPIView):
     serializer_class = ProjectSerializer
     permission_classes = [IsSuperuserOrReadOnly]
 
@@ -67,74 +74,228 @@ class ProjectListCreateView(generics.ListCreateAPIView):
         if category and category.isdigit():
             queryset = queryset.filter(type__id=int(category))
         return queryset.distinct()
+@extend_schema(tags=["Project"])
+class ProjectCreateView(generics.CreateAPIView):
+    serializer_class = ProjectSerializer
+    permission_classes = [IsSuperuserOrReadOnly]
 
-
+@extend_schema(tags=["Project"])
 class ProjectDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
     permission_classes = [IsSuperuserOrReadOnly]
 
 
+@extend_schema(
+    tags=["ProjectImage"],
+    request={
+        "multipart/form-data": {
+            "type": "object",
+            "properties": {
+                "image": {"type": "string", "format": "binary"},
+                "project": {"type": "integer"},
+            },
+            "required": ["image", "project"],
+        }
+    },
+    responses=ProjectImageSerializer,
+    methods=["POST"],
+)
 class ProjectImageListCreateView(generics.ListCreateAPIView):
     queryset = ProjectImage.objects.all()
     serializer_class = ProjectImageSerializer
     permission_classes = [IsSuperuserOrReadOnly]
+    parser_classes = [MultiPartParser, FormParser]
 
 
+@extend_schema(tags=["ProjectImage"])
+@extend_schema_view(
+    tags=["ProjectImage"],
+    put=extend_schema(
+        request={
+            "multipart/form-data": {
+                "type": "object",
+                "properties": {
+                    "image": {"type": "string", "format": "binary"},
+                    "project": {"type": "integer"},
+                },
+                "required": ["image", "project"],
+            }
+        },
+        responses=ProjectImageSerializer,
+    ),
+    patch=extend_schema(
+        request={
+            "multipart/form-data": {
+                "type": "object",
+                "properties": {
+                    "image": {"type": "string", "format": "binary"},
+                    "project": {"type": "integer"},
+                },
+            }
+        },
+        responses=ProjectImageSerializer,
+    ),
+)
 class ProjectImageDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = ProjectImage.objects.all()
     serializer_class = ProjectImageSerializer
     permission_classes = [IsSuperuserOrReadOnly]
+    parser_classes = [MultiPartParser]
 
-
+@extend_schema(
+    tags=["AboutUs"],
+    request={
+        "multipart/form-data": {
+            "type": "object",
+            "properties": {
+                "image": {
+                    "type": "string",
+                    "format": "binary",
+                },
+                "text": {
+                    "type": "string",
+                },
+            },
+            "required": ["image", "text"],
+        }
+    },
+    responses=AboutUsSerializer,
+)
 class AboutUsListCreateView(generics.ListCreateAPIView):
     queryset = AboutUs.objects.all()
     serializer_class = AboutUsSerializer
     permission_classes = [IsSuperuserOrReadOnly]
+    parser_classes = [MultiPartParser, FormParser]
 
 
+
+@extend_schema(tags=["AboutUs"])
+@extend_schema_view(
+    tags=["AboutUs"],
+    put=extend_schema(
+        request={
+            "multipart/form-data": {
+                "type": "object",
+                "properties": {
+                    "image": {"type": "string", "format": "binary"},
+                    "text": {"type": "string"},
+                },
+                "required": ["image", "text"],
+            }
+        },
+        responses=AboutUsSerializer,
+    ),
+    patch=extend_schema(
+        request={
+            "multipart/form-data": {
+                "type": "object",
+                "properties": {
+                    "image": {"type": "string", "format": "binary"},
+                    "text": {"type": "string"},
+                },
+            }
+        },
+        responses=AboutUsSerializer,
+    ),
+)
 class AboutUsDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = AboutUs.objects.all()
     serializer_class = AboutUsSerializer
     permission_classes = [IsSuperuserOrReadOnly]
+    parser_classes = [MultiPartParser]
 
 
+@extend_schema(tags=["Profession"])
 class ProfessionListCreateView(generics.ListCreateAPIView):
     queryset = Profession.objects.all()
     serializer_class = ProfessionSerializer
     permission_classes = [IsSuperuserOrReadOnly]
 
 
+@extend_schema(tags=["Profession"])
 class ProfessionDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Profession.objects.all()
     serializer_class = ProfessionSerializer
     permission_classes = [IsSuperuserOrReadOnly]
 
 
+@extend_schema(
+    tags=["Team"],
+    request={
+        "multipart/form-data": {
+            "type": "object",
+            "properties": {
+                "image": {"type": "string", "format": "binary"},
+                "first_name": {"type": "string"},
+                "last_name": {"type": "string"},
+                "profession": {"type": "integer"},
+            },
+            "required": ["image", "first_name", "last_name", "profession"],
+        }
+    },
+    responses=TeamSerializer,
+    methods=["POST"],
+)
 class TeamListCreateView(generics.ListCreateAPIView):
     queryset = Team.objects.all()
     serializer_class = TeamSerializer
     permission_classes = [IsSuperuserOrReadOnly]
+    parser_classes = [MultiPartParser, FormParser]
 
 
+@extend_schema(tags=["Team"])
+@extend_schema_view(
+    tags=["Team"],
+    put=extend_schema(
+        request={
+            "multipart/form-data": {
+                "type": "object",
+                "properties": {
+                    "image": {"type": "string", "format": "binary"},
+                    "first_name": {"type": "string"},
+                    "last_name": {"type": "string"},
+                    "profession": {"type": "integer"},
+                },
+                "required": ["image", "first_name", "last_name", "profession"],
+            }
+        },
+        responses=TeamSerializer,
+    ),
+    patch=extend_schema(
+        request={
+            "multipart/form-data": {
+                "type": "object",
+                "properties": {
+                    "image": {"type": "string", "format": "binary"},
+                    "first_name": {"type": "string"},
+                    "last_name": {"type": "string"},
+                    "profession": {"type": "integer"},
+                },
+            }
+        },
+        responses=TeamSerializer,
+    ),
+)
 class TeamDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Team.objects.all()
     serializer_class = TeamSerializer
     permission_classes = [IsSuperuserOrReadOnly]
+    parser_classes = [MultiPartParser]
 
-
+@extend_schema(tags=["Service"])
 class ServiceListCreateView(generics.ListCreateAPIView):
     queryset = Service.objects.all()
     serializer_class = ServiceSerializer
     permission_classes = [IsSuperuserOrReadOnly]
 
-
+@extend_schema(tags=["Service"])
 class ServiceDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Service.objects.all()
     serializer_class = ServiceSerializer
     permission_classes = [IsSuperuserOrReadOnly]
 
-
+@extend_schema(tags=["Contact"])
 class ContactCreateView(generics.CreateAPIView):
     queryset = Contact.objects.all()
     serializer_class = ContactSerializer
@@ -145,12 +306,61 @@ class ContactCreateView(generics.CreateAPIView):
         send_contact_notification.delay(contact.id)
 
 
+@extend_schema(
+    tags=["Comment"],
+    request={
+        "multipart/form-data": {
+            "type": "object",
+            "properties": {
+                "image": {"type": "string", "format": "binary"},
+                "username": {"type": "string"},
+                "text": {"type": "string"},
+            },
+            "required": ["image", "username", "text"],
+        }
+    },
+    responses=CommentSerializer,
+    methods=["POST"],
+)
 class CommentListCreateView(generics.ListCreateAPIView):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
+    parser_classes = [MultiPartParser, FormParser]
 
 
+@extend_schema(tags=["Comment"])
+@extend_schema_view(
+    tags=["Comment"],
+    put=extend_schema(
+        request={
+            "multipart/form-data": {
+                "type": "object",
+                "properties": {
+                    "image": {"type": "string", "format": "binary"},
+                    "username": {"type": "string"},
+                    "text": {"type": "string"},
+                },
+                "required": ["image", "username", "text"],
+            }
+        },
+        responses=CommentSerializer,
+    ),
+    patch=extend_schema(
+        request={
+            "multipart/form-data": {
+                "type": "object",
+                "properties": {
+                    "image": {"type": "string", "format": "binary"},
+                    "username": {"type": "string"},
+                    "text": {"type": "string"},
+                },
+            }
+        },
+        responses=CommentSerializer,
+    ),
+)
 class CommentDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
     permission_classes = [IsSuperuserOrReadOnly]
+    parser_classes = [MultiPartParser]
