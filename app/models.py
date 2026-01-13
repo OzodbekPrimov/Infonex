@@ -20,7 +20,7 @@ class Project(models.Model):
     description_ru = models.TextField(blank=True, null=True)
     description_en = models.TextField(blank=True, null=True)
     description_ar = models.TextField(blank=True, null=True)
-    type = models.ManyToManyField(Category, related_name="projects")
+    category = models.ManyToManyField(Category, related_name="projects")
     link = models.URLField(blank=True)
     client = models.CharField(max_length=255, blank=True)
     year = models.PositiveIntegerField()

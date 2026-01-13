@@ -24,8 +24,9 @@ from .serializers import (
     CommentSerializer,
     ContactSerializer,
     ProfessionSerializer,
+    ProjectCreateSerializer,
     ProjectImageSerializer,
-    ProjectSerializer,
+    ProjectListSerializer,
     ServiceSerializer,
     TeamSerializer,
 )
@@ -65,7 +66,7 @@ class CategoryDetailView(generics.RetrieveUpdateDestroyAPIView):
     ]
 )
 class ProjectListView(generics.ListAPIView):
-    serializer_class = ProjectSerializer
+    serializer_class = ProjectListSerializer
     permission_classes = [IsSuperuserOrReadOnly]
 
     def get_queryset(self):
@@ -76,13 +77,13 @@ class ProjectListView(generics.ListAPIView):
         return queryset.distinct()
 @extend_schema(tags=["Project"])
 class ProjectCreateView(generics.CreateAPIView):
-    serializer_class = ProjectSerializer
+    serializer_class = ProjectCreateSerializer
     permission_classes = [IsSuperuserOrReadOnly]
 
 @extend_schema(tags=["Project"])
 class ProjectDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Project.objects.all()
-    serializer_class = ProjectSerializer
+    serializer_class = ProjectListSerializer
     permission_classes = [IsSuperuserOrReadOnly]
 
 

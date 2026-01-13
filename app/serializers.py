@@ -27,7 +27,7 @@ class ProjectImageSerializer(serializers.ModelSerializer):
         model = ProjectImage
         fields = "__all__"
 
-class ProjectSerializer(serializers.ModelSerializer):
+class ProjectListSerializer(serializers.ModelSerializer):
     images = ProjectImageSerializer(many=True, read_only=True)
     class Meta:
         model = Project
@@ -49,7 +49,10 @@ class ProjectSerializer(serializers.ModelSerializer):
       
 
 
-
+class ProjectCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Project
+        fields="__all__"
 
 
 class AboutUsSerializer(serializers.ModelSerializer):
