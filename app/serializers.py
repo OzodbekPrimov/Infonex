@@ -40,7 +40,7 @@ class ProjectListSerializer(serializers.ModelSerializer):
             "description_ru",
             "description_en",
             "description_ar",
-            "type",
+            "category",
             "link",
             "client",
             "year",
