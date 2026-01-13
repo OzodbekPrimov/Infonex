@@ -20,18 +20,24 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class ProjectSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Project
-        fields = "__all__"
-
-
 class ProjectImageSerializer(serializers.ModelSerializer):
     image = extend_schema_field(OpenApiTypes.BINARY)(serializers.ImageField())
 
     class Meta:
         model = ProjectImage
         fields = "__all__"
+
+class ProjectSerializer(serializers.ModelSerializer):
+    image=ProjectImageSerializer(many=True)
+    class Meta:
+        model = Project
+        fields =["title_uz","title_ru","title_en","title_ar",
+                 "description_uz","description_ru","description_en","description_ar",
+                 "type","link","client","year","image"]
+      
+
+
+
 
 
 class AboutUsSerializer(serializers.ModelSerializer):

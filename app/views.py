@@ -94,6 +94,7 @@ class ProjectDetailView(generics.RetrieveUpdateDestroyAPIView):
             "properties": {
                 "image": {"type": "string", "format": "binary"},
                 "project": {"type": "integer"},
+                "is_main": {"type": "boolan"},
             },
             "required": ["image", "project"],
         }
