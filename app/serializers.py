@@ -27,11 +27,21 @@ class ProjectImageSerializer(serializers.ModelSerializer):
         model = ProjectImage
         fields = "__all__"
 
+
+class ServiceNameSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Service
+        fields = ["name_uz", "name_ru", "name_en", "name_ar"]
+
+
 class ProjectListSerializer(serializers.ModelSerializer):
     images = ProjectImageSerializer(many=True, read_only=True)
+    services = ServiceNameSerializer(read_only=True, many=True)
+
     class Meta:
         model = Project
         fields = [
+            "id",
             "title_uz",
             "title_ru",
             "title_en",
@@ -43,10 +53,10 @@ class ProjectListSerializer(serializers.ModelSerializer):
             "category",
             "link",
             "client",
+            "services",
             "year",
             "images",
         ]
-      
 
 
 class ProjectCreateSerializer(serializers.ModelSerializer):

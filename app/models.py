@@ -11,6 +11,20 @@ class Category(models.Model):
         return self.name_uz
 
 
+class Service(models.Model):
+    name_uz = models.CharField(max_length=255, unique=True)
+    name_ru = models.CharField(max_length=255, blank=True, null=True)
+    name_en = models.CharField(max_length=255, blank=True, null=True)
+    name_ar = models.CharField(max_length=255, blank=True, null=True)
+    description_uz = models.TextField(null=True, blank=True)
+    description_ru = models.TextField(null=True, blank=True)
+    description_en = models.TextField(null=True, blank=True)
+    description_ar = models.TextField(null=True, blank=True)
+
+    def __str__(self) -> str:
+        return self.name_uz
+
+
 class Project(models.Model):
     title_uz = models.CharField(max_length=255)
     title_ru = models.CharField(max_length=255, blank=True, null=True)
@@ -23,6 +37,8 @@ class Project(models.Model):
     category = models.ManyToManyField(Category, related_name="projects")
     link = models.URLField(blank=True)
     client = models.CharField(max_length=255, blank=True)
+    services = models.ManyToManyField(Service, related_name="projects", blank=True)
+
     year = models.PositiveIntegerField()
 
     def __str__(self) -> str:
@@ -71,18 +87,6 @@ class Team(models.Model):
         return f"{self.first_name} {self.last_name}"
 
 
-class Service(models.Model):
-    name_uz = models.CharField(max_length=255, unique=True)
-    name_ru = models.CharField(max_length=255, blank=True, null=True)
-    name_en = models.CharField(max_length=255, blank=True, null=True)
-    name_ar = models.CharField(max_length=255, blank=True, null=True)
-    description_uz = models.TextField(null=True, blank=True)
-    description_ru = models.TextField(null=True, blank=True)
-    description_en = models.TextField(null=True, blank=True)
-    description_ar = models.TextField(null=True, blank=True)
-
-    def __str__(self) -> str:
-        return self.name_uz
 
 
 class Contact(models.Model):

@@ -73,8 +73,10 @@ class ProjectListView(generics.ListAPIView):
         queryset = Project.objects.all()
         category = self.request.query_params.get("category")
         if category and category.isdigit():
-            queryset = queryset.filter(type__id=int(category))
+            queryset = queryset.filter(category__id=int(category))
         return queryset.distinct()
+
+
 @extend_schema(tags=["Project"])
 class ProjectCreateView(generics.CreateAPIView):
     serializer_class = ProjectCreateSerializer

@@ -37,8 +37,8 @@ class ProjectImageInline(admin.TabularInline):
 
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ("title_uz", "year", "client", "category_list", "link")
-    list_filter = ("year", "category")
+    list_display = ("title_uz", "year", "client", "category_list", "service_list", "link")
+    list_filter = ("year", "category", "services")
     search_fields = (
         "title_uz",
         "title_ru",
@@ -50,7 +50,7 @@ class ProjectAdmin(admin.ModelAdmin):
         "description_en",
         "description_ar",
     )
-    filter_horizontal = ("category",)
+    filter_horizontal = ("category", "services")
     inlines = (ProjectImageInline,)
     ordering = ("-year", "title_uz")
     fieldsets = (
@@ -72,13 +72,17 @@ class ProjectAdmin(admin.ModelAdmin):
         ),
         (
             "Details",
-            {"fields": ("category", "client", "link", "year")},
+            {"fields": ("category", "services", "client", "link", "year")},
         ),
     )
 
     @admin.display(description="Categories")
     def category_list(self, obj):
         return ", ".join(obj.category.values_list("name_uz", flat=True))
+
+    @admin.display(description="Services")
+    def service_list(self, obj):
+        return ", ".join(obj.services.values_list("name_uz", flat=True))
 
 
 @admin.register(ProjectImage)
