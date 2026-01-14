@@ -87,6 +87,14 @@ class TeamSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
+class TeamListSerializer(serializers.ModelSerializer):
+    profession = serializers.CharField(source="profession.title_uz", read_only=True)
+
+    class Meta:
+        model = Team
+        fields = "__all__"
+
+
 class ServiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Service

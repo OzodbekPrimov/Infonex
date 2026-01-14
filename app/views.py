@@ -28,6 +28,7 @@ from .serializers import (
     ProjectImageSerializer,
     ProjectListSerializer,
     ServiceSerializer,
+    TeamListSerializer,
     TeamSerializer,
 )
 from .tasks import send_contact_notification
@@ -250,6 +251,11 @@ class TeamListCreateView(generics.ListCreateAPIView):
     serializer_class = TeamSerializer
     permission_classes = [IsSuperuserOrReadOnly]
     parser_classes = [MultiPartParser]
+
+    def get_serializer_class(self):
+        if self.request.method == "GET":
+            return TeamListSerializer
+        return TeamSerializer
 
 
 @extend_schema(tags=["Team"])
