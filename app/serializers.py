@@ -88,7 +88,7 @@ class TeamSerializer(serializers.ModelSerializer):
 
 
 class TeamListSerializer(serializers.ModelSerializer):
-    profession = serializers.CharField(source="profession.title_uz", read_only=True)
+    profession = ProfessionSerializer(read_only=True)
 
     class Meta:
         model = Team
