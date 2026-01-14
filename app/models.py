@@ -112,3 +112,14 @@ class Comment(models.Model):
 
     def __str__(self) -> str:
         return f"{self.username_uz}: {self.text_uz[:30]}"
+
+
+class FAQ(models.Model):
+    question_uz=models.CharField(max_length=255)
+    question_en=models.CharField(max_length=255)
+    question_ar=models.CharField(max_length=255)
+    question_ru=models.CharField(max_length=255)
+    answer_uz=models.CharField(max_length=255)
+    answer_en=models.CharField(max_length=255)
+    answer_ar=models.CharField(max_length=255)
+    answer_ru=models.CharField(max_length=255)

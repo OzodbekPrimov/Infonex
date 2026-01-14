@@ -8,6 +8,10 @@ from .views import (
     CommentDetailView,
     CommentListCreateView,
     ContactCreateView,
+    FAQCreateAPIView,
+    FAQDeleteAPIView,
+    FAQListAPIView,
+    FAQUpdateAPIView,
     ProfessionDetailView,
     ProfessionListCreateView,
     ProjectCreateView,
@@ -56,4 +60,9 @@ urlpatterns = [
     path("contact/", ContactCreateView.as_view(), name="contact-create"),
     path("comments/", CommentListCreateView.as_view(), name="comment-list-create"),
     path("comments/<int:pk>/", CommentDetailView.as_view(), name="comment-detail"),
+
+    path('FAQ/create',FAQCreateAPIView.as_view()),
+    path('FAQ/list',FAQListAPIView.as_view()),
+    path('FAQ/update/<int:id>',FAQUpdateAPIView.as_view()),
+    path('FAQ/delete/<int:id>',FAQDeleteAPIView.as_view()),
 ]

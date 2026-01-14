@@ -8,6 +8,7 @@ from rest_framework import generics, permissions
 from rest_framework.parsers import MultiPartParser
 
 from .models import (
+    FAQ,
     AboutUs,
     Category,
     Comment,
@@ -23,6 +24,7 @@ from .serializers import (
     CategorySerializer,
     CommentSerializer,
     ContactSerializer,
+    FAQModelSerializer,
     ProfessionSerializer,
     ProjectCreateSerializer,
     ProjectImageSerializer,
@@ -396,3 +398,29 @@ class CommentDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = CommentSerializer
     permission_classes = [IsSuperuserOrReadOnly]
     parser_classes = [MultiPartParser]
+
+
+
+
+@extend_schema(tags=["FAQ"],request=FAQModelSerializer)
+class FAQCreateAPIView(generics.CreateAPIView):
+    queryset=FAQ.objects.all()
+    serializer_class=FAQModelSerializer
+
+@extend_schema(tags=["FAQ"],request=FAQModelSerializer)
+class FAQListAPIView(generics.ListAPIView):
+    queryset=FAQ.objects.all()
+    serializer_class=FAQModelSerializer
+
+@extend_schema(tags=["FAQ"],request=FAQModelSerializer)
+class FAQUpdateAPIView(generics.UpdateAPIView):
+    queryset=FAQ.objects.all()
+    serializer_class=FAQModelSerializer
+    lookup_field = "id"
+
+@extend_schema(tags=["FAQ"],request=FAQModelSerializer)
+class FAQDeleteAPIView(generics.RetrieveAPIView):
+    queryset=FAQ.objects.all()
+    serializer_class=FAQModelSerializer
+    lookup_field = "id"
+    

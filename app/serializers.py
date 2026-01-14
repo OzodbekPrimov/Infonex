@@ -2,6 +2,7 @@ from drf_spectacular.utils import OpenApiTypes, extend_schema_field
 from rest_framework import serializers
 
 from .models import (
+    FAQ,
     AboutUs,
     Category,
     Comment,
@@ -114,3 +115,9 @@ class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
         fields = "__all__"
+
+
+class FAQModelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=FAQ
+        fields="__all__"
