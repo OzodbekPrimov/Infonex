@@ -49,6 +49,13 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+if not DEBUG:
+    index = INSTALLED_APPS.index("django.contrib.staticfiles")
+    INSTALLED_APPS.insert(index, "whitenoise.runserver_nostatic")
+    MIDDLEWARE.insert(2, "whitenoise.middleware.WhiteNoiseMiddleware")
+else:
+    pass
+
 ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
@@ -139,9 +146,18 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
+if not DEBUG:
+    STORAGES = {
+        'staticfiles': {
+            'BACKEND': 'whitenoise.storage.CompressedStaticFilesStorage',
+        },
+        'default': {
+            'BACKEND': 'django.core.files.storage.FileSystemStorage',
+            'LOCATION': os.path.join(BASE_DIR, 'media'),
+        }
+    }
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
 
 
 REST_FRAMEWORK = {

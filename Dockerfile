@@ -5,6 +5,14 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 
 WORKDIR /app
 
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libpq-dev \
+    libffi-dev \
+    libssl-dev \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
 COPY req.txt /app/req.txt
 RUN pip install --upgrade pip \
     && pip wheel --no-cache-dir --wheel-dir /wheels -r /app/req.txt
@@ -21,6 +29,6 @@ RUN pip install --no-cache-dir /wheels/*
 
 COPY . /app
 
-EXPOSE 8000
-
-CMD ["sh", "-c", "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"]
+COPY entrypoint.sh /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
+ENTRYPOINT ["bash", "/app/entrypoint.sh"]
