@@ -79,3 +79,27 @@ class Command(BaseCommand):
             )
 
         self.stdout.write(self.style.SUCCESS("Data successfully imported ✅"))
+
+    def _attach_image(self, obj, image_path):
+        """
+        image_path example: /media/about/about1.jpg
+        """
+        if not image_path:
+            return
+
+        # убираем MEDIA_URL
+        relative_path = image_path.replace(settings.MEDIA_URL, "").lstrip("/")
+        full_path = os.path.join(settings.MEDIA_ROOT, relative_path)
+
+        if not os.path.exists(full_path):
+            self.stdout.write(
+                self.style.WARNING(f"Image not found: {full_path}")
+            )
+            return
+
+        with open(full_path, "rb") as f:
+            obj.image.save(
+                os.path.basename(full_path),
+                File(f),
+                save=True,
+            )
