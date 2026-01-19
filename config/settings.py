@@ -20,8 +20,6 @@ DEBUG = env_bool("DEBUG", True)
 allowed_hosts = os.getenv("ALLOWED_HOSTS", "*")
 ALLOWED_HOSTS = [host.strip() for host in allowed_hosts.split(",") if host.strip()]
 
-
-
 INSTALLED_APPS = [
     'jazzmin',
     'django.contrib.admin',
@@ -76,8 +74,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-
-
 db_engine = os.getenv("DB_ENGINE", "django.db.backends.postgresql")
 db_name = os.getenv("DB_NAME")
 
@@ -100,8 +96,6 @@ else:
         }
     }
 
-
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -116,8 +110,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-
 
 LANGUAGE_CODE = 'uz'
 
@@ -140,8 +132,6 @@ LOCALE_PATHS = [
     BASE_DIR / 'locale',
 ]
 
-
-
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / "staticfiles"
 MEDIA_URL = "media/"
@@ -160,14 +150,13 @@ if not DEBUG:
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny'
-    ]
+    ],
+    'DEFAULT_RENDERER_CLASSES': ['rest_framework.renderers.JSONRenderer']
 }
-
 
 SPECTACULAR_SETTINGS = {
     'TITLE': 'Infonex',
@@ -195,7 +184,6 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 CORS_ALLOW_CREDENTIALS = env_bool("CORS_ALLOW_CREDENTIALS", False)
 
-
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -210,11 +198,11 @@ LOGGING = {
             'style': '{',
         },
         'security': {
-                'format': (
-                    '[{asctime}] {levelname} {name} {message} '
-                    '| dkim={dkim_domain:-} expected={expected_domain:-}'
-                ),
-                'style': '{',
+            'format': (
+                '[{asctime}] {levelname} {name} {message} '
+                '| dkim={dkim_domain:-} expected={expected_domain:-}'
+            ),
+            'style': '{',
         },
     },
 
@@ -231,10 +219,10 @@ LOGGING = {
             'formatter': 'verbose',
         },
         'security_file': {
-                'level': 'INFO',
-                'class': 'logging.FileHandler',
-                'filename': BASE_DIR / 'logs/security.log',
-                'formatter': 'security',
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': BASE_DIR / 'logs/security.log',
+            'formatter': 'security',
         },
     },
 
@@ -266,4 +254,3 @@ LOGGING = {
         },
     }
 }
-
