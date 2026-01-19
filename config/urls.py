@@ -9,8 +9,8 @@ from django.views.static import serve
 
 urlpatterns = i18n_patterns(
     path('admin-page-locked/', admin.site.urls),
-    path('api-schema-locked', SpectacularAPIView.as_view(), name='schema'),
-    path('api-swagger-locked', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+    path('api-schema-locked/', SpectacularAPIView.as_view(), name='schema'),
+    path('api-swagger-locked/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
     path("api/", include("app.urls")),
     path('api-auth/', include('rest_framework.urls')),
 )
