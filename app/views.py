@@ -43,11 +43,13 @@ class IsSuperuserOrReadOnly(permissions.BasePermission):
         user = request.user
         return bool(user and user.is_authenticated and user.is_superuser)
 
+
 @extend_schema(tags=["Category"])
 class CategoryListCreateView(generics.ListCreateAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
     permission_classes = [IsSuperuserOrReadOnly]
+
 
 @extend_schema(tags=["Category"])
 class CategoryDetailView(generics.RetrieveUpdateDestroyAPIView):
@@ -84,6 +86,7 @@ class ProjectListView(generics.ListAPIView):
 class ProjectCreateView(generics.CreateAPIView):
     serializer_class = ProjectCreateSerializer
     permission_classes = [IsSuperuserOrReadOnly]
+
 
 @extend_schema(tags=["Project"])
 class ProjectDetailView(generics.RetrieveUpdateDestroyAPIView):
@@ -150,6 +153,7 @@ class ProjectImageDetailView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsSuperuserOrReadOnly]
     parser_classes = [MultiPartParser]
 
+
 @extend_schema(
     tags=["AboutUs"],
     request={
@@ -172,7 +176,6 @@ class AboutUsListCreateView(generics.ListCreateAPIView):
     serializer_class = AboutUsSerializer
     permission_classes = [IsSuperuserOrReadOnly]
     parser_classes = [MultiPartParser]
-
 
 
 @extend_schema(tags=["AboutUs"])
@@ -299,17 +302,20 @@ class TeamDetailView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsSuperuserOrReadOnly]
     parser_classes = [MultiPartParser]
 
+
 @extend_schema(tags=["Service"])
 class ServiceListCreateView(generics.ListCreateAPIView):
     queryset = Service.objects.all()
     serializer_class = ServiceSerializer
     permission_classes = [IsSuperuserOrReadOnly]
 
+
 @extend_schema(tags=["Service"])
 class ServiceDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Service.objects.all()
     serializer_class = ServiceSerializer
     permission_classes = [IsSuperuserOrReadOnly]
+
 
 @extend_schema(tags=["Contact"])
 class ContactCreateView(generics.CreateAPIView):
@@ -400,27 +406,27 @@ class CommentDetailView(generics.RetrieveUpdateDestroyAPIView):
     parser_classes = [MultiPartParser]
 
 
-
-
-@extend_schema(tags=["FAQ"],request=FAQModelSerializer)
+@extend_schema(tags=["FAQ"], request=FAQModelSerializer)
 class FAQCreateAPIView(generics.CreateAPIView):
-    queryset=FAQ.objects.all()
-    serializer_class=FAQModelSerializer
+    queryset = FAQ.objects.all()
+    serializer_class = FAQModelSerializer
 
-@extend_schema(tags=["FAQ"],request=FAQModelSerializer)
+
+@extend_schema(tags=["FAQ"], request=FAQModelSerializer)
 class FAQListAPIView(generics.ListAPIView):
-    queryset=FAQ.objects.all()
-    serializer_class=FAQModelSerializer
+    queryset = FAQ.objects.all()
+    serializer_class = FAQModelSerializer
 
-@extend_schema(tags=["FAQ"],request=FAQModelSerializer)
+
+@extend_schema(tags=["FAQ"], request=FAQModelSerializer)
 class FAQUpdateAPIView(generics.UpdateAPIView):
-    queryset=FAQ.objects.all()
-    serializer_class=FAQModelSerializer
+    queryset = FAQ.objects.all()
+    serializer_class = FAQModelSerializer
     lookup_field = "id"
 
-@extend_schema(tags=["FAQ"],request=FAQModelSerializer)
+
+@extend_schema(tags=["FAQ"], request=FAQModelSerializer)
 class FAQDeleteAPIView(generics.RetrieveAPIView):
-    queryset=FAQ.objects.all()
-    serializer_class=FAQModelSerializer
+    queryset = FAQ.objects.all()
+    serializer_class = FAQModelSerializer
     lookup_field = "id"
-    
