@@ -21,7 +21,7 @@ class Service(models.Model):
     description_en = models.TextField(null=True, blank=True)
     description_ar = models.TextField(null=True, blank=True)
 
-    # order = models.PositiveSmallIntegerField(default=0)
+    order = models.PositiveSmallIntegerField(default=0)
 
     def __str__(self) -> str:
         return self.name_uz
