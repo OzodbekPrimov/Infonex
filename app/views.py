@@ -305,7 +305,7 @@ class TeamDetailView(generics.RetrieveUpdateDestroyAPIView):
 
 @extend_schema(tags=["Service"])
 class ServiceListCreateView(generics.ListCreateAPIView):
-    queryset = Service.objects.all().order_by("order")
+    queryset = Service.objects.all()
     serializer_class = ServiceSerializer
     permission_classes = [IsSuperuserOrReadOnly]
 
