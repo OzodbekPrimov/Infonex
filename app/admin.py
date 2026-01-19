@@ -145,6 +145,7 @@ class TeamAdmin(admin.ModelAdmin):
 class ServiceAdmin(admin.ModelAdmin):
     list_display = ("name_uz", "contact_count")
     search_fields = ("name_uz", "name_ru", "name_en", "name_ar")
+    # list_editable = ('order',)
     ordering = ("name_uz",)
     fieldsets = (
         (
