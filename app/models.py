@@ -23,11 +23,8 @@ class Service(models.Model):
 
     order = models.PositiveSmallIntegerField(default=0)
 
-    class Meta:
-        ordering = ("order",)
-
     def __str__(self) -> str:
-        return self.name_uz
+        return f"{self.name_uz} - {self.order}"
 
 
 class Project(models.Model):
