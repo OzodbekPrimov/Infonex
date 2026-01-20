@@ -321,7 +321,7 @@ class ServiceDetailView(generics.RetrieveUpdateDestroyAPIView):
 class ContactCreateView(generics.CreateAPIView):
     queryset = Contact.objects.all()
     serializer_class = ContactSerializer
-    permission_classes = [IsSuperuserOrReadOnly]
+    permission_classes = [permissions.AllowAny]
 
     def perform_create(self, serializer):
         contact = serializer.save()
