@@ -222,8 +222,8 @@ class FAQAdmin(admin.ModelAdmin):
     )
 
     fieldsets = (
-        "Uzbek", {"field": ("question_uz", "answer_uz")},
-        "Russian", {"field": ("question_ru", "answer_ru")},
-        "English", {"field": ("question_en", "answer_en")},
-        "Arabic", {"field": ("question_ar", "answer_ar")},
+        "Uzbek", {"fields": ("question_uz", "answer_uz")},
+        "Russian", {"fields": ("question_ru", "answer_ru")},
+        "English", {"fields": ("question_en", "answer_en")},
+        "Arabic", {"fields": ("question_ar", "answer_ar")},
     )
