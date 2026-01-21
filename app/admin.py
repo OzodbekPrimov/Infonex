@@ -10,6 +10,7 @@ from .models import (
     ProjectImage,
     Service,
     Team,
+    FAQ,
 )
 
 
@@ -207,3 +208,22 @@ class CommentAdmin(admin.ModelAdmin):
     @admin.display(description="Text (UZ)")
     def short_text_uz(self, obj):
         return (obj.text_uz[:60] + "...") if len(obj.text_uz) > 60 else obj.text_uz
+
+
+@admin.register(FAQ)
+class FAQAdmin(admin.ModelAdmin):
+    list_display = ("question_uz", "answer_uz")
+
+    search_fields = (
+        "question_uz", "answer_uz",
+        "question_en", "answer_en",
+        "question_ru", "answer_ru",
+        "question_ar", "answer_ar",
+    )
+
+    fieldsets = (
+        "Uzbek", {"field": ("question_uz", "answer_uz")},
+        "Russian", {"field": ("question_ru", "answer_ru")},
+        "English", {"field": ("question_en", "answer_en")},
+        "Arabic", {"field": ("question_ar", "answer_ar")},
+    )
