@@ -252,7 +252,7 @@ class ProfessionDetailView(generics.RetrieveUpdateDestroyAPIView):
     methods=["POST"],
 )
 class TeamListCreateView(generics.ListCreateAPIView):
-    queryset = Team.objects.all()
+    queryset = Team.objects.all().order_by("?")
     serializer_class = TeamSerializer
     permission_classes = [IsSuperuserOrReadOnly]
     parser_classes = [MultiPartParser]
