@@ -1,0 +1,139 @@
+{
+    "about_us": [
+        {
+            "text_uz": "Infonex - 2025-yildan buyon biznes uchun innovatsion raqamli yechimlarni yetkazib beruvchi zamonaviy IT-kompaniya.\r\nBiz biznes ehtiyojlariga moslashtirilgan veb va mobil ilovalar, CRM tizimlari va avtomatlashtirilgan platformalarni ishlab chiqishga ixtisoslashganmiz.\r\nBizning vazifamiz ishonchli, samarali va qulay IT yechimlari orqali o‘lchanadigan natijalarni ta’minlashdir.\r\nInfonex bilan biznesingiz raqamli davrda oldinga siljiydi",
+            "text_ru": "Infonex - это современная IT-компания, которая с 2025 года предоставляет инновационные цифровые решения для бизнеса.\r\nМы специализируемся на разработке веб- и мобильных приложений, CRM-систем и автоматизированных платформ, адаптированных к потребностям бизнеса.\r\nНаша миссия - обеспечить измеримые результаты с помощью надежных, эффективных и удобных IT-решений.\r\nС Infonex ваш бизнес движется вперед в цифровую эпоху",
+            "text_en": "Infonex is a modern IT company delivering innovative digital solutions for businesses since 2025.\r\nWe specialize in developing web and mobile applications, CRM systems, and automated platforms tailored to business needs.\r\nOur mission is to provide measurable results through reliable, efficient, and user-friendly IT solutions.\r\nWith Infonex, your business moves forward in the digital era",
+            "text_ar": "Infonex هي شركة تقنية معلومات حديثة تقدم حلولاً رقمية مبتكرة للأعمال منذ عام 2025.\r\nنحن متخصصون في تطوير تطبيقات الويب والهواتف المحمولة، وأنظمة إدارة علاقات العملاء (CRM)، والمنصات المؤتمتة المصممة وفق احتياجات الأعمال.\r\nمهمتنا هي تقديم نتائج ملموسة من خلال حلول تقنية موثوقة وفعالة وسهلة الاستخدام.\r\nمع Infonex، يتقدم عملك بثقة في العصر الرقمي",
+            "image": "/media/about/Logo_Infonex_Black_BBIjtAO.png"
+        }
+    ],
+    "comments": [
+        {
+            "text_uz": "Biz kompaniyamizni raqamlashtirish uchun Infonex jamoasiga murojaat qildik. Ular nafaqat talablarimizni to‘liq tushunishdi, balki kutilganidan ham yaxshiroq yechim taklif qilishdi. Professional yondashuv va sifatli natija uchun rahmat.",
+            "text_ru": "",
+            "text_en": "",
+            "text_ar": "",
+            "username_uz": "test3",
+            "username_ru": null,
+            "username_en": null,
+            "username_ar": null,
+            "image": "/media/comments/img_Kzagd3L.jpg"
+        },
+        {
+            "text_uz": "Infonex bilan hamkorlik qilishdan juda mamnunmiz. Tezkor, ishonchli va zamonaviy IT yechimlar. Tavsiya qilamiz!",
+            "text_ru": "",
+            "text_en": "",
+            "text_ar": "",
+            "username_uz": "test4",
+            "username_ru": null,
+            "username_en": null,
+            "username_ar": null,
+            "image": "/media/comments/img_PfJXNVD.jpg"
+        },
+        {
+            "text_uz": "IT sohasida eng zorlaridan biri deb bilaman Infonex companiyasini...",
+            "text_ru": "Я считаю компанию Infonex одной из лучших в сфере IT.",
+            "text_en": "I consider Infonex to be one of the best companies in the IT industry.",
+            "text_ar": "I consider Infonex to be one of the best companies in the IT industry.",
+            "username_uz": "test2",
+            "username_ru": null,
+            "username_en": null,
+            "username_ar": null,
+            "image": "/media/comments/img_s1oRcrC.jpg"
+        },
+        {
+            "text_uz": "Men kompaniyamni raqamlashtirish maqsadida Infonex compniyasiga murojaat qilgandim, men xoxlagandanda yaxshiroq proyekt qilib berishdi.....",
+            "text_ru": "Я обратился в компанию Infonex с целью цифровизации моей компании, и они разработали проект даже лучше, чем я ожидал.",
+            "text_en": "I contacted Infonex company to digitalize my business, and they delivered a project that was even better than I had expected.",
+            "text_ar": "تواصلتُ مع شركة Infonex بهدف رقمنة شركتي، وقد قدموا مشروعًا أفضل مما كنت أتوقع.",
+            "username_uz": "test",
+            "username_ru": null,
+            "username_en": null,
+            "username_ar": null,
+            "image": "/media/comments/front-view-spooky-character-posing.jpg"
+        }
+    ],
+    "services": [
+        {
+            "name_uz": "Server, Cloud & DevOps",
+            "name_ru": "Серверы, облачные технологии и DevOps",
+            "name_en": "Server, Cloud & DevOps",
+            "name_ar": "إدارة الخوادم والسحابة وعمليات التطوير والتشغيل",
+            "description_uz": "Biz server infratuzilmasini loyihalash, sozlash va optimallashtirish xizmatlarini taqdim etamiz. Cloud yechimlar, DevOps jarayonlari, xavfsizlik, monitoring va uzluksiz ishlash — barchasi professional darajada amalga oshiriladi",
+            "description_ru": "Мы предоставляем услуги по проектированию, настройке и оптимизации серверной инфраструктуры. Облачные решения, процессы DevOps, безопасность, мониторинг и непрерывная работа — всё выполняется на профессиональном уровне",
+            "description_en": "We provide services for designing, configuring, and optimizing server infrastructure. Cloud solutions, DevOps processes, security, monitoring, and continuous operation — all carried out at a professional level",
+            "description_ar": "نحن نقدم خدمات تصميم وإعداد وتحسين البنية التحتية للخوادم. حلول السحابة، عمليات التطوير والتشغيل، الأمن، المراقبة وضمان التشغيل المستمر — كل ذلك يتم على مستوى احترافي"
+        },
+        {
+            "name_uz": "Mobile Development (Android & iOS)",
+            "name_ru": "Мобильная разработка (Android и iOS)",
+            "name_en": "Mobile Development (Android & iOS)",
+            "name_ar": "تطوير التطبيقات المحمولة",
+            "description_uz": "Android va iOS platformalari uchun premium darajadagi mobil ilovalar yaratamiz. Foydalanuvchi tajribasi (UX), vizual dizayn va texnik barqarorlik uyg‘unlashgan holda, ilovalar professional jamoa tomonidan to‘liq sikl asosida ishlab chiqiladi — g‘oyadan tortib production’gacha",
+            "description_ru": "Мы создаём премиальные мобильные приложения для платформ Android и iOS. Совмещая пользовательский опыт (UX), визуальный дизайн и техническую стабильность, приложения разрабатываются профессиональной командой в полном цикле — от идеи до запуска в производство",
+            "description_en": "We create premium mobile applications for Android and iOS platforms. Combining user experience (UX), visual design, and technical stability, applications are developed by a professional team through a complete cycle — from concept to production",
+            "description_ar": "نحن نصمم تطبيقات محمولة متميزة لمنصات Android و iOS. مع الجمع بين تجربة المستخدم (UX) والتصميم البصري والاستقرار التقني، يتم تطوير التطبيقات بواسطة فريق محترف خلال دورة كاملة — من الفكرة إلى الإنتاج"
+        },
+        {
+            "name_uz": "Integratsiya & Analitika",
+            "name_ru": "Интеграция и аналитика",
+            "name_en": "Integration & Analytics",
+            "name_ar": "التكامل والتحليلات",
+            "description_uz": "To‘lov tizimlari, SMS/Email servislar, tashqi API’lar va biznes analitika vositalari bilan integratsiyalarni amalga oshiramiz. Ma’lumotlar asosida qaror qabul qilish uchun kuchli hisobot va monitoring tizimlari yaratiladi",
+            "description_ru": "Мы осуществляем интеграции с платёжными системами, SMS/Email сервисами, внешними API и инструментами бизнес-аналитики. Создаются мощные системы отчётности и мониторинга для принятия решений на основе данных",
+            "description_en": "We implement integrations with payment systems, SMS/Email services, external APIs, and business analytics tools. Powerful reporting and monitoring systems are created to enable data-driven decision making",
+            "description_ar": "نقوم بتنفيذ التكامل مع أنظمة الدفع، وخدمات الرسائل القصيرة والبريد الإلكتروني، وواجهات برمجة التطبيقات الخارجية، وأدوات تحليل الأعمال. يتم إنشاء أنظمة قوية للتقارير والمراقبة لتمكين اتخاذ القرارات بناءً على البيانات"
+        },
+        {
+            "name_uz": "Axborot Xavfsizligi",
+            "name_ru": "Информационная безопасность",
+            "name_en": "Information Security",
+            "name_ar": "أمن المعلومات",
+            "description_uz": "Web ilovalar, API va tizimlar uchun xavfsizlik auditlari o‘tkazamiz. Ma’lumotlarni himoyalash, foydalanuvchi rollari va kirish nazorati xalqaro xavfsizlik standartlari asosida yo‘lga qo‘yiladi",
+            "description_ru": "Мы проводим аудиты безопасности для веб-приложений, API и систем. Защита данных, управление ролями пользователей и контроль доступа реализуются в соответствии с международными стандартами безопасности",
+            "description_en": "We conduct security audits for web applications, APIs, and systems. Data protection, user roles, and access control are implemented based on international security standards",
+            "description_ar": "نقوم بإجراء تدقيقات أمنية لتطبيقات الويب وواجهات برمجة التطبيقات (APIs) والأنظمة. يتم تنفيذ حماية البيانات وأدوار المستخدمين والتحكم في الوصول وفقًا للمعايير الدولية للأمن"
+        },
+        {
+            "name_uz": "CRM / ERP Tizimlar",
+            "name_ru": "Системы CRM / ERP",
+            "name_en": "CRM / ERP Systems",
+            "name_ar": "أنظمة CRM / ERP",
+            "description_uz": "Biznes jarayonlarini avtomatlashtirish uchun individual CRM va ERP tizimlar ishlab chiqamiz. Savdo, mijozlar bilan ishlash, hisobotlar, nazorat va boshqaruv yagona tizimga birlashtiriladi. Tizimlar kompaniyangiz o‘sishiga mos ravishda kengaytiriladigan qilib yaratiladi",
+            "description_ru": "Мы разрабатываем индивидуальные CRM и ERP системы для автоматизации бизнес-процессов. Продажи, работа с клиентами, отчётность, контроль и управление объединяются в единую систему. Системы создаются с возможностью масштабирования, подстраиваясь под рост вашей компании",
+            "description_en": "We develop custom CRM and ERP systems to automate business processes. Sales, customer management, reporting, control, and administration are integrated into a single system. The systems are designed to be scalable, adapting to the growth of your company",
+            "description_ar": "نقوم بتطوير أنظمة CRM و ERP مخصصة لأتمتة العمليات التجارية. يتم دمج المبيعات وإدارة العملاء والتقارير والمراقبة والإدارة في نظام واحد. تم تصميم الأنظمة لتكون قابلة للتوسع، لتتكيف مع نمو شركتكم"
+        },
+        {
+            "name_uz": "IT Konsalting & Texnik Qo‘llab-quvvatlash",
+            "name_ru": "IT-консалтинг и техническая поддержка",
+            "name_en": "IT Consulting & Technical Support",
+            "name_ar": "الاستشارات التقنية ودعم تكنولوجيا المعلومات",
+            "description_uz": "Biz mijozlarga nafaqat texnik ijrochi, balki strategik IT hamkor sifatida xizmat qilamiz. Texnik topshiriqlar (ТЗ), arxitektura, texnologiya tanlash va uzoq muddatli support xizmatlari taqdim etiladi",
+            "description_ru": "Мы работаем с клиентами не только как технические исполнители, но и как стратегические IT-партнёры. Предоставляем разработку технической документации (ТЗ), проектирование архитектуры, подбор технологий и услуги долгосрочной технической поддержки",
+            "description_en": "We serve our clients not only as technical executors, but as strategic IT partners. We provide technical documentation (TT), system architecture design, technology selection, and long-term support services",
+            "description_ar": "نقدّم لعملائنا خدماتنا ليس فقط كمنفّذين تقنيين، بل كشركاء استراتيجيين في مجال تكنولوجيا المعلومات. نوفر إعداد المتطلبات الفنية، تصميم بنية الأنظمة، اختيار التقنيات المناسبة، وخدمات الدعم الفني طويلة الأمد"
+        },
+        {
+            "name_uz": "UI/UX & Product Design",
+            "name_ru": "Дизайн интерфейса и пользовательского опыта и дизайн продукта",
+            "name_en": "UI/UX & Product Design",
+            "name_ar": "تصميم واجهة المستخدم وتجربة المستخدم وتصميم المنتجات",
+            "description_uz": "Premium mahsulotlar kuchli dizayndan boshlanadi. Biz web va mobil ilovalar uchun zamonaviy, intuitiv va biznesga yo‘naltirilgan UI/UX dizaynlar yaratamiz. Prototiplash va foydalanuvchi tahlili dizayn jarayonining ajralmas qismi hisoblanadi",
+            "description_ru": "Премиальные продукты начинаются с сильного дизайна. Мы создаём современные, интуитивные и ориентированные на бизнес UI/UX-дизайны для веб- и мобильных приложений. Прототипирование и анализ пользователей являются неотъемлемой частью процесса дизайна",
+            "description_en": "Premium products start with strong design. We create modern, intuitive, and business-oriented UI/UX designs for web and mobile applications. Prototyping and user analysis are an integral part of the design process",
+            "description_ar": "تبدأ المنتجات المتميزة بتصميم قوي. نحن نصمم واجهات وتجارب مستخدم حديثة وبديهية وموجهة نحو الأعمال للتطبيقات الويب والمحمولة. يُعدّ إنشاء النماذج الأولية وتحليل المستخدم جزءاً لا يتجزأ من عملية التصميم"
+        },
+        {
+            "name_uz": "Web Development",
+            "name_ru": "Веб-разработка",
+            "name_en": "Web Development",
+            "name_ar": "تطوير الويب",
+            "description_uz": "Biz murakkab va yuqori yuklamaga mo‘ljallangan web platformalarni ishlab chiqamiz. Korporativ veb-saytlar, SaaS mahsulotlar, admin panellar va maxsus web ilovalar zamonaviy texnologiyalar hamda barqaror arxitektura asosida yaratiladi. Har bir loyiha tezkorlik, xavfsizlik va kengaytirilish imkoniyati hisobga olingan holda ishlab chiqiladi",
+            "description_ru": "Мы разрабатываем сложные веб-платформы с высокой нагрузкой. Корпоративные веб-сайты, продукты SaaS, панели администратора и кастомные веб-приложения создаются с использованием современных технологий и стабильной архитектуры. Каждый проект разрабатывается с учётом скорости, безопасности и масштабируемости",
+            "description_en": "We develop complex, high-load web platforms. Corporate websites, SaaS products, admin panels, and custom web applications are created using modern technologies and a stable architecture. Each project is designed with speed, security, and scalability in mind",
+            "description_ar": "نحن نطور منصات ويب معقدة وعالية التحمل. تُنشأ المواقع الإلكترونية للشركات، ومنتجات SaaS، ولوحات الإدارة، وتطبيقات الويب المخصصة باستخدام تقنيات حديثة وبنية مستقرة. يتم تصميم كل مشروع مع مراعاة السرعة والأمان وقابلية التوسع"
+        }
+    ]
+}
