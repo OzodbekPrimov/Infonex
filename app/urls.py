@@ -22,7 +22,7 @@ from .views import (
     ServiceDetailView,
     ServiceListCreateView,
     TeamDetailView,
-    TeamListCreateView,
+    TeamListCreateView, CustomerServiceListView,
 )
 
 urlpatterns = [
@@ -60,6 +60,7 @@ urlpatterns = [
     path("contact/", ContactCreateView.as_view(), name="contact-create"),
     path("comments/", CommentListCreateView.as_view(), name="comment-list-create"),
     path("comments/<int:pk>/", CommentDetailView.as_view(), name="comment-detail"),
+    path("customer-services/", CustomerServiceListView.as_view(), name="customer-service-list"),
 
     path('FAQ/create/', FAQCreateAPIView.as_view()),
     path('FAQ/list/', FAQListAPIView.as_view()),
