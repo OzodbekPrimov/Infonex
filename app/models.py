@@ -95,6 +95,7 @@ class Contact(models.Model):
     name = models.CharField(max_length=255)
     email = models.EmailField()
     service = models.ForeignKey(Service, on_delete=models.PROTECT, related_name="contacts")
+    your_services = models.CharField(null=True, blank=True)
     message = models.TextField()
 
     def __str__(self) -> str:

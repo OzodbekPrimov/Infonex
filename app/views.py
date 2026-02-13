@@ -257,10 +257,15 @@ class TeamListCreateView(generics.ListCreateAPIView):
     permission_classes = [IsSuperuserOrReadOnly]
     parser_classes = [MultiPartParser]
 
+    def get_queryset(self):
+        # Randomize team order on each request.
+        return Team.objects.order_by("?")
+
     def get_serializer_class(self):
         if self.request.method == "GET":
             return TeamListSerializer
         return TeamSerializer
+
 
 
 @extend_schema(tags=["Team"])
