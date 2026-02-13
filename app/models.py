@@ -50,7 +50,7 @@ class Project(models.Model):
 class ProjectImage(models.Model):
     image = models.ImageField(upload_to="projects/")
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="images")
-    is_main=models.BooleanField(default=False)
+    is_main = models.BooleanField(default=False)
 
     def __str__(self) -> str:
         return f"Image for {self.project}"
@@ -89,17 +89,26 @@ class Team(models.Model):
         return f"{self.first_name} {self.last_name}"
 
 
-
-
 class Contact(models.Model):
     name = models.CharField(max_length=255)
     email = models.EmailField()
     service = models.ForeignKey(Service, on_delete=models.PROTECT, related_name="contacts")
-    your_services = models.CharField(null=True, blank=True)
     message = models.TextField()
+    customer_service = models.ForeignKey("CustomerService",
+                                         on_delete=models.SET_NULL,
+                                         blank=True,
+                                         null=True,
+                                         verbose_name="Customer Service")
 
     def __str__(self) -> str:
         return f"{self.name} <{self.email}>"
+
+
+class CustomerService(models.Model):
+    title_uz = models.CharField(max_length=255)
+    title_ru = models.CharField(max_length=255, blank=True, null=True)
+    title_en = models.CharField(max_length=255, blank=True, null=True)
+    title_ar = models.CharField(max_length=255, blank=True, null=True)
 
 
 class Comment(models.Model):
@@ -118,11 +127,11 @@ class Comment(models.Model):
 
 
 class FAQ(models.Model):
-    question_uz=models.CharField(max_length=255)
-    question_en=models.CharField(max_length=255)
-    question_ar=models.CharField(max_length=255)
-    question_ru=models.CharField(max_length=255)
-    answer_uz=models.CharField(max_length=255)
-    answer_en=models.CharField(max_length=255)
-    answer_ar=models.CharField(max_length=255)
-    answer_ru=models.CharField(max_length=255)
+    question_uz = models.CharField(max_length=255)
+    question_en = models.CharField(max_length=255)
+    question_ar = models.CharField(max_length=255)
+    question_ru = models.CharField(max_length=255)
+    answer_uz = models.CharField(max_length=255)
+    answer_en = models.CharField(max_length=255)
+    answer_ar = models.CharField(max_length=255)
+    answer_ru = models.CharField(max_length=255)

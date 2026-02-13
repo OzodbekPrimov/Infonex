@@ -10,7 +10,7 @@ from .models import (
     ProjectImage,
     Service,
     Team,
-    FAQ,
+    FAQ, CustomerService,
 )
 
 
@@ -174,13 +174,36 @@ class ServiceAdmin(admin.ModelAdmin):
 
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
-    list_display = ("name", "email", "service")
+    list_display = ("name", "email", "service", "customer_service_display")
     list_filter = ("service",)
     search_fields = ("name", "message", "email")
     autocomplete_fields = ("service",)
     fieldsets = (
         ("Details", {"fields": ("name", "message", "email", "service")}),
     )
+
+    def get_queryset(self, request):
+        return super().get_queryset(request).select_related("customer_service")
+
+    @admin.display(description="Customer Service")
+    def customer_service_display(self, obj):
+        if not obj.customer_service:
+            return '------'
+        return obj.customer_service.title_uz
+
+
+@admin.register(CustomerService)
+class CustomerServiceAdmin(admin.ModelAdmin):
+    list_display = ("id", "title_uz", "title_ru", "title_en", "title_ar")
+    search_fields = ("title_uz", "title_ru", "title_en", "title_ar")
+    ordering = ("title_uz",)
+    fieldsets = (
+        ("Uzbek", {"fields": ("title_uz",)}),
+        ("Russian", {"fields": ("title_ru",)}),
+        ("English", {"fields": ("title_en",)}),
+        ("Arabic", {"fields": ("title_ar",)}),
+    )
+
 
 
 @admin.register(Comment)

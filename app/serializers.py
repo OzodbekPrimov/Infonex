@@ -11,7 +11,7 @@ from .models import (
     Project,
     ProjectImage,
     Service,
-    Team,
+    Team, CustomerService,
 )
 
 
@@ -106,6 +106,13 @@ class ContactSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Contact
+        fields = "__all__"
+
+
+class CustomerServiceSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = CustomerService
         fields = "__all__"
 
 

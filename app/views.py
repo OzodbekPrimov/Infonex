@@ -17,7 +17,7 @@ from .models import (
     Project,
     ProjectImage,
     Service,
-    Team,
+    Team, CustomerService,
 )
 from .serializers import (
     AboutUsSerializer,
@@ -32,6 +32,7 @@ from .serializers import (
     ServiceSerializer,
     TeamListSerializer,
     TeamSerializer,
+    CustomerServiceSerializer
 )
 from .tasks import send_contact_notification
 
@@ -267,7 +268,6 @@ class TeamListCreateView(generics.ListCreateAPIView):
         return TeamSerializer
 
 
-
 @extend_schema(tags=["Team"])
 @extend_schema_view(
     tags=["Team"],
@@ -331,6 +331,13 @@ class ContactCreateView(generics.CreateAPIView):
     def perform_create(self, serializer):
         contact = serializer.save()
         send_contact_notification.delay(contact.id)
+
+
+@extend_schema(tags=["Contact"])
+class CustomerServiceListView(generics.ListAPIView):
+    queryset = CustomerService.objects.all()
+    serializer_class = CustomerServiceSerializer
+    permission_classes = [permissions.AllowAny]
 
 
 @extend_schema(
