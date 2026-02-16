@@ -91,7 +91,8 @@ class Team(models.Model):
 
 class Contact(models.Model):
     name = models.CharField(max_length=255)
-    email = models.EmailField()
+    email = models.EmailField(blank=True, null=True)
+    phone_number = models.CharField(max_length=31, blank=True, null=True)
     service = models.ForeignKey(Service, on_delete=models.PROTECT, related_name="contacts")
     message = models.TextField()
     customer_service = models.ForeignKey("CustomerService",

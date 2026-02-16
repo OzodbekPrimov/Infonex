@@ -174,12 +174,12 @@ class ServiceAdmin(admin.ModelAdmin):
 
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
-    list_display = ("name", "email", "service", "customer_service_display")
+    list_display = ("name", "email", "phone_number", "service", "customer_service_display")
     list_filter = ("service",)
-    search_fields = ("name", "message", "email")
+    search_fields = ("name", "message", "email", "phone_number")
     autocomplete_fields = ("service",)
     fieldsets = (
-        ("Details", {"fields": ("name", "message", "email", "service")}),
+        ("Details", {"fields": ("name", "message", "email", "phone_number", "service")}),
     )
 
     def get_queryset(self, request):
