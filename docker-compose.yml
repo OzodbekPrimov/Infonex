@@ -3,6 +3,7 @@ services:
   db:
     image: postgres:16
     container_name: infonex_db
+    restart: always
     volumes:
       - infonex_postgres_data:/var/lib/postgresql/data
     env_file:
@@ -23,14 +24,14 @@ services:
   redis:
     image: redis:7
     container_name: infonex_redis
-    restart: unless-stopped
+    restart: always
 
   web:
     build:
       context: .
       dockerfile: ./Dockerfile
     container_name: infonex_web
-    restart: unless-stopped
+    restart: always
     security_opt:
       - seccomp:unconfined
     env_file:
@@ -50,7 +51,7 @@ services:
       context: ./
       dockerfile: ./Dockerfile
     container_name: infonex_celery
-    restart: unless-stopped
+    restart: always
     command: celery -A config worker --concurrency=10 --loglevel=INFO
     entrypoint: [ ]
     volumes:
